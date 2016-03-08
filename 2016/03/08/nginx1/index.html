@@ -1,0 +1,356 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>mengd</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="John Doe">
+    
+    <meta name="description" content="linux下nginx的安装nginx的安装常用下载目录：/usr/local/src/下载软件： wget 链接地址解压：tar zxvf nginx-1.4.1.tar.gzzxvf分别是四个参数
+x : 从 tar 包中把文件提取出来
+z : 表示 tar 包是被 gzip 压缩过的，所以解压">
+    
+    
+    
+    
+    <link rel="alternate" href="www.imengdan.com" title="mengd" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/logo.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/logo.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="mengd" title="mengd"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="mengd">mengd</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">笔记</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/08/nginx1/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="John Doe">John Doe</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-03-08T10:45:48.119Z" itemprop="datePublished">2016-03-08</time>
+    Updated:<time datetime="2016-03-08T10:45:48.122Z" itemprop="dateModified">2016-03-08</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#linux下nginx的安装"><span class="toc-number">1.</span> <span class="toc-text">linux下nginx的安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nginx的安装"><span class="toc-number"></span> <span class="toc-text">nginx的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常用下载目录：-usr-local-src"><span class="toc-number">0.1.</span> <span class="toc-text">常用下载目录：/usr/local/src/</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载软件：-wget-链接地址"><span class="toc-number">0.2.</span> <span class="toc-text">下载软件： wget 链接地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解压：tar-zxvf-nginx-1-4-1-tar-gz"><span class="toc-number">0.3.</span> <span class="toc-text">解压：tar zxvf nginx-1.4.1.tar.gz</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对即将安装的软件进行配置（-usr-local-nginx是安装目录）-configure-prefix-usr-local-nginx，缺少某些包的时候会报错，那么就安装缺少的包"><span class="toc-number">0.4.</span> <span class="toc-text">对即将安装的软件进行配置（/usr/local/nginx是安装目录）./configure --prefix=/usr/local/nginx，缺少某些包的时候会报错，那么就安装缺少的包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译-make-amp-amp-make-install"><span class="toc-number">0.5.</span> <span class="toc-text">编译 make && make install</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nginx的配置"><span class="toc-number"></span> <span class="toc-text">nginx的配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx下的目录"><span class="toc-number">0.1.</span> <span class="toc-text">nginx下的目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动nginx-usr-local-nginx-目录下执行-：-sbin-nginx"><span class="toc-number">0.2.</span> <span class="toc-text">启动nginx(/usr/local/nginx 目录下执行)：./sbin/nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看网络连接状态：netstat-ant"><span class="toc-number">0.3.</span> <span class="toc-text">查看网络连接状态：netstat -ant</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看某个进程：ps-aux-grep-nginx"><span class="toc-number">0.4.</span> <span class="toc-text">查看某个进程：ps aux|grep nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看nginx的进程号（在配置文件中可找到nginx-pid的文件目录）：cat-logs-nginx-pid"><span class="toc-number">0.5.</span> <span class="toc-text">查看nginx的进程号（在配置文件中可找到nginx.pid的文件目录）：cat logs/nginx.pid</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx-配置文件"><span class="toc-number">0.6.</span> <span class="toc-text">nginx 配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日志管理"><span class="toc-number">0.7.</span> <span class="toc-text">日志管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日志切割"><span class="toc-number">0.8.</span> <span class="toc-text">日志切割</span></a></li></ol></li></ol>
+		</div>
+		
+		<h2 id="linux下nginx的安装"><a href="#linux下nginx的安装" class="headerlink" title="linux下nginx的安装"></a>linux下nginx的安装</h2><h1 id="nginx的安装"><a href="#nginx的安装" class="headerlink" title="nginx的安装"></a>nginx的安装</h1><h3 id="常用下载目录：-usr-local-src"><a href="#常用下载目录：-usr-local-src" class="headerlink" title="常用下载目录：/usr/local/src/"></a>常用下载目录：<code>/usr/local/src/</code></h3><h3 id="下载软件：-wget-链接地址"><a href="#下载软件：-wget-链接地址" class="headerlink" title="下载软件： wget 链接地址"></a>下载软件： <code>wget 链接地址</code></h3><h3 id="解压：tar-zxvf-nginx-1-4-1-tar-gz"><a href="#解压：tar-zxvf-nginx-1-4-1-tar-gz" class="headerlink" title="解压：tar zxvf nginx-1.4.1.tar.gz"></a>解压：<code>tar zxvf nginx-1.4.1.tar.gz</code></h3><pre><code>zxvf分别是四个参数
+x : 从 tar 包中把文件提取出来
+z : 表示 tar 包是被 gzip 压缩过的，所以解压时需要用 gunzip 解压
+v : 显示详细信息
+f xxx.tar.gz :  指定被处理的文件是 xxx.tar.gz
+</code></pre><h3 id="对即将安装的软件进行配置（-usr-local-nginx是安装目录）-configure-prefix-usr-local-nginx，缺少某些包的时候会报错，那么就安装缺少的包"><a href="#对即将安装的软件进行配置（-usr-local-nginx是安装目录）-configure-prefix-usr-local-nginx，缺少某些包的时候会报错，那么就安装缺少的包" class="headerlink" title="对即将安装的软件进行配置（/usr/local/nginx是安装目录）./configure --prefix=/usr/local/nginx，缺少某些包的时候会报错，那么就安装缺少的包"></a>对即将安装的软件进行配置（<code>/usr/local/nginx</code>是安装目录）<code>./configure --prefix=/usr/local/nginx</code>，缺少某些包的时候会报错，那么就安装缺少的包</h3><pre><code>yum install pcre 安装pcre库（正则表达式库）
+yum install pcre-devel (devel开发包)
+yum install zlib-devel (devel开发包)
+</code></pre><h3 id="编译-make-amp-amp-make-install"><a href="#编译-make-amp-amp-make-install" class="headerlink" title="编译 make &amp;&amp; make install"></a>编译 <code>make &amp;&amp; make install</code></h3><p>如果不报错则安装完成</p>
+<h1 id="nginx的配置"><a href="#nginx的配置" class="headerlink" title="nginx的配置"></a>nginx的配置</h1><h3 id="nginx下的目录"><a href="#nginx下的目录" class="headerlink" title="nginx下的目录"></a>nginx下的目录</h3><pre><code>cd /usr/local/nginx  
+conf 配置文件
+html 网页文件
+logs 日志文件
+sbin 主要二进制程序（进程文件）
+</code></pre><h3 id="启动nginx-usr-local-nginx-目录下执行-：-sbin-nginx"><a href="#启动nginx-usr-local-nginx-目录下执行-：-sbin-nginx" class="headerlink" title="启动nginx(/usr/local/nginx 目录下执行)：./sbin/nginx"></a>启动nginx(<code>/usr/local/nginx</code> 目录下执行)：<code>./sbin/nginx</code></h3><h3 id="查看网络连接状态：netstat-ant"><a href="#查看网络连接状态：netstat-ant" class="headerlink" title="查看网络连接状态：netstat -ant"></a>查看网络连接状态：<code>netstat -ant</code></h3><h3 id="查看某个进程：ps-aux-grep-nginx"><a href="#查看某个进程：ps-aux-grep-nginx" class="headerlink" title="查看某个进程：ps aux|grep nginx"></a>查看某个进程：<code>ps aux|grep nginx</code></h3><pre><code>kill -INT 26652（进程号） 紧急快速杀掉nginx进程
+kill -HUP 26652（进程号） 改变配置文件时，平滑的重读配置文件（优雅的杀掉nginx，重新加载新配置）
+kill -USR1 26652（进程号）重读日志（nginx运行时改变日志文件的文件名不会改变nginx写入此文件，需要如此执行才会写入新文件，用于日志备份）
+kill -USR2 26652（进程号）升级用
+</code></pre><h3 id="查看nginx的进程号（在配置文件中可找到nginx-pid的文件目录）：cat-logs-nginx-pid"><a href="#查看nginx的进程号（在配置文件中可找到nginx-pid的文件目录）：cat-logs-nginx-pid" class="headerlink" title="查看nginx的进程号（在配置文件中可找到nginx.pid的文件目录）：cat logs/nginx.pid"></a>查看nginx的进程号（在配置文件中可找到<code>nginx.pid</code>的文件目录）：<code>cat logs/nginx.pid</code></h3><pre><code>kill -HUP `cat logs/nginx.pid`  同kill -HUP 26652（进程号）
+</code></pre><h3 id="nginx-配置文件"><a href="#nginx-配置文件" class="headerlink" title="nginx 配置文件"></a>nginx 配置文件</h3><pre><code>worker_processes 1;//有1个工作的子进程，可以修改，一般修改为 CPU数*核数
+events {
+    worker_connections 1024;//如 1个word能同时允许最大连1024个链接
+}一般配置nginx链接的特性
+
+http {
+    server {
+        listen  80;//监听端口
+        server_name a.com;//域名
+        #access_log  logs/host.access.log  main;
+        location / {
+            root abc //对应路径
+            index index.html //默认主页文件
+        }//对应哪个目录
+    }//虚拟主机  基于域名 a.com
+    server {
+        listen  2011;//监听端口
+        server_name a.com;//域名
+        location / {
+            root abc //对应路径
+            index index.html //默认主页文件
+        }//对应哪个目录
+    }//基于端口 a.com:2022
+    server {
+        listen  80;//监听端口
+        server_name 192.168.1.200;//ip
+        location / {
+            root abc //对应路径
+            index index.html //默认主页文件
+        }//对应哪个目录
+    }//基于ip 192.168.1.200
+}配置http服务器的主要段
+</code></pre><h3 id="日志管理"><a href="#日志管理" class="headerlink" title="日志管理"></a>日志管理</h3><pre><code>access_log  logs/host.access.log  main;
+#该server, 它的访问日志的文件是`logs/host.access.log` ,使用的格式`main`格式.
+</code></pre><p>main格式是什么?</p>
+<pre><code>log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;
+#                  &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;
+#                  &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;
+</code></pre><p>main格式是一种记录日志的格式，记录的 <code>remote_addr.... http_x_forwarded_for</code> 等选项.</p>
+<pre><code>远程IP- 远程用户/用户时间 请求方法(如GET/POST) 请求体body长度 referer来源信息
+http-user-agent用户代理/蜘蛛 ,被转发的请求的原始IP
+http_x_forwarded_for:在经过代理时,代理把你的本来IP加在此头信息中,传输你的原始IP
+</code></pre><h3 id="日志切割"><a href="#日志切割" class="headerlink" title="日志切割"></a>日志切割</h3><p>每天移动log文件到备份目录，创建新的log文件，nginx重读日志</p>
+<pre><code>1 #!/bin/bash
+2 LOGPATH=/usr/local/nginx/logs/access.log
+3 BAKPATH=/usr/local/nginx/data/$(date -d yesterday +%Y%m)
+4 
+5 mkdir  -p  $BAKPATH
+6 
+7 bak=$BAKPATH/$(date -d yesterday +%d%H%M).access.log
+8 #echo $bak
+9 mv $LOGPATH $bak
+10 touch $LOGPATH
+11 
+12 kill -USR1 `cat /usr/local/nginx/logs/nginx.pid`
+</code></pre>  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2016/03/08/nginx1/" data-title="mengd" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/03/04/git/"  title="git学习笔记">
+ <strong>NEXT:</strong><br/> 
+ <span>git学习笔记
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#linux下nginx的安装"><span class="toc-number">1.</span> <span class="toc-text">linux下nginx的安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nginx的安装"><span class="toc-number"></span> <span class="toc-text">nginx的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常用下载目录：-usr-local-src"><span class="toc-number">0.1.</span> <span class="toc-text">常用下载目录：/usr/local/src/</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载软件：-wget-链接地址"><span class="toc-number">0.2.</span> <span class="toc-text">下载软件： wget 链接地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解压：tar-zxvf-nginx-1-4-1-tar-gz"><span class="toc-number">0.3.</span> <span class="toc-text">解压：tar zxvf nginx-1.4.1.tar.gz</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对即将安装的软件进行配置（-usr-local-nginx是安装目录）-configure-prefix-usr-local-nginx，缺少某些包的时候会报错，那么就安装缺少的包"><span class="toc-number">0.4.</span> <span class="toc-text">对即将安装的软件进行配置（/usr/local/nginx是安装目录）./configure --prefix=/usr/local/nginx，缺少某些包的时候会报错，那么就安装缺少的包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译-make-amp-amp-make-install"><span class="toc-number">0.5.</span> <span class="toc-text">编译 make && make install</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nginx的配置"><span class="toc-number"></span> <span class="toc-text">nginx的配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx下的目录"><span class="toc-number">0.1.</span> <span class="toc-text">nginx下的目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动nginx-usr-local-nginx-目录下执行-：-sbin-nginx"><span class="toc-number">0.2.</span> <span class="toc-text">启动nginx(/usr/local/nginx 目录下执行)：./sbin/nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看网络连接状态：netstat-ant"><span class="toc-number">0.3.</span> <span class="toc-text">查看网络连接状态：netstat -ant</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看某个进程：ps-aux-grep-nginx"><span class="toc-number">0.4.</span> <span class="toc-text">查看某个进程：ps aux|grep nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看nginx的进程号（在配置文件中可找到nginx-pid的文件目录）：cat-logs-nginx-pid"><span class="toc-number">0.5.</span> <span class="toc-text">查看nginx的进程号（在配置文件中可找到nginx.pid的文件目录）：cat logs/nginx.pid</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx-配置文件"><span class="toc-number">0.6.</span> <span class="toc-text">nginx 配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日志管理"><span class="toc-number">0.7.</span> <span class="toc-text">日志管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日志切割"><span class="toc-number">0.8.</span> <span class="toc-text">日志切割</span></a></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="www.imengdan.com" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2016 
+		
+		<a href="http://yoursite.com" target="_blank" title="John Doe">John Doe</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
