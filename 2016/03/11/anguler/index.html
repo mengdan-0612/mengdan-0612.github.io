@@ -1,0 +1,328 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>linux下php的安装和配置 | mengd</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="John Doe">
+    
+    <meta name="description" content="Angular 学习笔记Hello Angular&amp;lt;!doctype html&amp;gt;
+&amp;lt;html ng-app&amp;gt;
+    &amp;lt;head&amp;gt;
+        &amp;lt;script src=&amp;quot;http://code.angularjs.org/angular-1.0">
+    
+    
+    
+    
+    <link rel="alternate" href="www.imengdan.com" title="mengd" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/logo.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/logo.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="mengd" title="mengd"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="mengd">mengd</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">笔记</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/11/anguler/" title="linux下php的安装和配置" itemprop="url">linux下php的安装和配置</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="John Doe">John Doe</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-03-11T10:00:48.000Z" itemprop="datePublished">2016-03-11</time>
+    更新日期:<time datetime="2016-04-29T02:22:45.616Z" itemprop="dateModified">2016-04-29</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Angular-学习笔记"><span class="toc-number">1.</span> <span class="toc-text">Angular 学习笔记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hello-Angular"><span class="toc-number">2.</span> <span class="toc-text">Hello Angular</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#双向数据绑定"><span class="toc-number">3.</span> <span class="toc-text">双向数据绑定</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AngularJS应用的解析"><span class="toc-number"></span> <span class="toc-text">AngularJS应用的解析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#模板（Templates）"><span class="toc-number">1.</span> <span class="toc-text">模板（Templates）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用程序逻辑（Logic）和行为（Behavior）"><span class="toc-number">2.</span> <span class="toc-text">应用程序逻辑（Logic）和行为（Behavior）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模型数据（Data）"><span class="toc-number">3.</span> <span class="toc-text">模型数据（Data）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#此外，AngularJS还提供了一些非常有用的服务特性："><span class="toc-number">4.</span> <span class="toc-text">此外，AngularJS还提供了一些非常有用的服务特性：</span></a></li></ol>
+		</div>
+		
+		<h2 id="Angular-学习笔记"><a href="#Angular-学习笔记" class="headerlink" title="Angular 学习笔记"></a>Angular 学习笔记</h2><h2 id="Hello-Angular"><a href="#Hello-Angular" class="headerlink" title="Hello Angular"></a>Hello Angular</h2><pre><code>&lt;!doctype html&gt;
+&lt;html ng-app&gt;
+    &lt;head&gt;
+        &lt;script src=&quot;http://code.angularjs.org/angular-1.0.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        Hello {{'World'}}!
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>标记<code>ng-app</code>表示以下代码有Angular处理</p>
+<p><code>&lt;script src=&quot;http://code.angularjs.org/angular-1.0.1.min.js&quot;&gt;&lt;/script&gt;</code>载入AngularJS脚本</p>
+<p><code>Hello World!</code>标签中的正文是应用的模板，在UI中显示，注意，使用双大括号标记的内容是问候语中绑定的表达式，这个表达式是一个简单的字符串<code>World</code></p>
+<h2 id="双向数据绑定"><a href="#双向数据绑定" class="headerlink" title="双向数据绑定"></a>双向数据绑定</h2><pre><code>&lt;!doctype html&gt;
+&lt;html ng-app&gt;
+&lt;head&gt;
+    &lt;script src=&quot;angular-1.3.15.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+Your name: &lt;input type=&quot;text&quot; ng-model=&quot;yourname&quot; placeholder=&quot;World&quot;&gt;
+&lt;hr&gt;
+Hello {{yourname || 'World'}}!
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>文本输入指令<code>&lt;input ng-model=&quot;yourname&quot; /&gt;</code>绑定到一个叫<code>yourname</code>的模型变量。</p>
+<p>双大括号标记将<code>yourname</code>模型变量添加到问候语文本。</p>
+<p>你不需要为该应用另外注册一个事件侦听器或添加事件处理程序！</p>
+<p>现在试着在输入框中键入您的名称，您键入的名称将立即更新显示在问候语中。 这就是AngularJS双向数据绑定的概念。 输入框的任何更改会立即反映到模型变量（一个方向），模型变量的任何更改都会立即反映到问候语文本中（另一方向）。</p>
+<h1 id="AngularJS应用的解析"><a href="#AngularJS应用的解析" class="headerlink" title="AngularJS应用的解析"></a>AngularJS应用的解析</h1><p>本节描述AngularJS应用程序的三个组成部分，并解释它们如何映射到模型-视图-控制器设计模式：</p>
+<h2 id="模板（Templates）"><a href="#模板（Templates）" class="headerlink" title="模板（Templates）"></a>模板（Templates）</h2><p>模板是您用HTML和CSS编写的文件，展现应用的视图。 您可给HTML添加新的元素、属性标记，作为AngularJS编译器的指令。 AngularJS编译器是完全可扩展的，这意味着通过AngularJS您可以在HTML中构建您自己的HTML标记！</p>
+<h2 id="应用程序逻辑（Logic）和行为（Behavior）"><a href="#应用程序逻辑（Logic）和行为（Behavior）" class="headerlink" title="应用程序逻辑（Logic）和行为（Behavior）"></a>应用程序逻辑（Logic）和行为（Behavior）</h2><p>应用程序逻辑和行为是您用JavaScript定义的控制器。AngularJS与标准AJAX应用程序不同，您不需要另外编写侦听器或DOM控制器，因为它们已经内置到AngularJS中了。这些功能使您的应用程序逻辑很容易编写、测试、维护和理解。</p>
+<h2 id="模型数据（Data）"><a href="#模型数据（Data）" class="headerlink" title="模型数据（Data）"></a>模型数据（Data）</h2><p>模型是从AngularJS作用域对象的属性引申的。模型中的数据可能是Javascript对象、数组或基本类型，这都不重要，重要的是，他们都属于AngularJS作用域对象。</p>
+<p>AngularJS通过作用域来保持数据模型与视图界面UI的双向同步。一旦模型状态发生改变，AngularJS会立即刷新反映在视图界面中，反之亦然。</p>
+<h2 id="此外，AngularJS还提供了一些非常有用的服务特性："><a href="#此外，AngularJS还提供了一些非常有用的服务特性：" class="headerlink" title="此外，AngularJS还提供了一些非常有用的服务特性："></a>此外，AngularJS还提供了一些非常有用的服务特性：</h2><ul>
+<li>底层服务包括依赖注入，XHR、缓存、URL路由和浏览器抽象服务。</li>
+<li>您还可以扩展和添加自己特定的应用服务。</li>
+<li>这些服务可以让您非常方便的编写WEB应用。</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2016/03/11/anguler/" data-title="linux下php的安装和配置 | mengd" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/03/11/hello-world/" title="linux下php的安装和配置">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  linux下php的安装和配置</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/03/08/nginx1/"  title="linux下nginx的安装笔记">
+ <strong>NEXT:</strong><br/> 
+ <span>linux下nginx的安装笔记
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Angular-学习笔记"><span class="toc-number">1.</span> <span class="toc-text">Angular 学习笔记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hello-Angular"><span class="toc-number">2.</span> <span class="toc-text">Hello Angular</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#双向数据绑定"><span class="toc-number">3.</span> <span class="toc-text">双向数据绑定</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AngularJS应用的解析"><span class="toc-number"></span> <span class="toc-text">AngularJS应用的解析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#模板（Templates）"><span class="toc-number">1.</span> <span class="toc-text">模板（Templates）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用程序逻辑（Logic）和行为（Behavior）"><span class="toc-number">2.</span> <span class="toc-text">应用程序逻辑（Logic）和行为（Behavior）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模型数据（Data）"><span class="toc-number">3.</span> <span class="toc-text">模型数据（Data）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#此外，AngularJS还提供了一些非常有用的服务特性："><span class="toc-number">4.</span> <span class="toc-text">此外，AngularJS还提供了一些非常有用的服务特性：</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="www.imengdan.com" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2016 
+		
+		<a href="http://yoursite.com" target="_blank" title="John Doe">John Doe</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

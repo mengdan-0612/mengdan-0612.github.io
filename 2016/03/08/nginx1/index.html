@@ -40,7 +40,7 @@ z : 表示 tar 包是被 gzip 压缩过的，所以解压时需要用 gunzip 解
 				<h1 class="site-name"><a href="/" title="mengd">mengd</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -53,7 +53,7 @@ z : 表示 tar 包是被 gzip 压缩过的，所以解压时需要用 gunzip 解
 					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -77,7 +77,7 @@ z : 表示 tar 包是被 gzip 压缩过的，所以解压时需要用 gunzip 解
     </p>
   <p class="article-time">
     <time datetime="2016-03-08T10:00:48.000Z" itemprop="datePublished">2016-03-08</time>
-    Updated:<time datetime="2016-03-08T10:51:42.766Z" itemprop="dateModified">2016-03-08</time>
+    更新日期:<time datetime="2016-03-08T10:51:42.766Z" itemprop="dateModified">2016-03-08</time>
     
   </p>
 </header>
@@ -85,7 +85,7 @@ z : 表示 tar 包是被 gzip 压缩过的，所以解压时需要用 gunzip 解
 		
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目錄</strong>
 		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#nginx的安装"><span class="toc-number">1.</span> <span class="toc-text">nginx的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常用下载目录：-usr-local-src"><span class="toc-number">1.0.1.</span> <span class="toc-text">常用下载目录：/usr/local/src/</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载软件：-wget-链接地址"><span class="toc-number">1.0.2.</span> <span class="toc-text">下载软件： wget 链接地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解压：tar-zxvf-nginx-1-4-1-tar-gz"><span class="toc-number">1.0.3.</span> <span class="toc-text">解压：tar zxvf nginx-1.4.1.tar.gz</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对即将安装的软件进行配置（-usr-local-nginx是安装目录）-configure-prefix-usr-local-nginx，缺少某些包的时候会报错，那么就安装缺少的包"><span class="toc-number">1.0.4.</span> <span class="toc-text">对即将安装的软件进行配置（/usr/local/nginx是安装目录）./configure --prefix=/usr/local/nginx，缺少某些包的时候会报错，那么就安装缺少的包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译-make-amp-amp-make-install"><span class="toc-number">1.0.5.</span> <span class="toc-text">编译 make && make install</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nginx的配置"><span class="toc-number">2.</span> <span class="toc-text">nginx的配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx下的目录"><span class="toc-number">2.0.1.</span> <span class="toc-text">nginx下的目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动nginx-usr-local-nginx-目录下执行-：-sbin-nginx"><span class="toc-number">2.0.2.</span> <span class="toc-text">启动nginx(/usr/local/nginx 目录下执行)：./sbin/nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看网络连接状态：netstat-ant"><span class="toc-number">2.0.3.</span> <span class="toc-text">查看网络连接状态：netstat -ant</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看某个进程：ps-aux-grep-nginx"><span class="toc-number">2.0.4.</span> <span class="toc-text">查看某个进程：ps aux|grep nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看nginx的进程号（在配置文件中可找到nginx-pid的文件目录）：cat-logs-nginx-pid"><span class="toc-number">2.0.5.</span> <span class="toc-text">查看nginx的进程号（在配置文件中可找到nginx.pid的文件目录）：cat logs/nginx.pid</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx-配置文件"><span class="toc-number">2.0.6.</span> <span class="toc-text">nginx 配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日志管理"><span class="toc-number">2.0.7.</span> <span class="toc-text">日志管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日志切割"><span class="toc-number">2.0.8.</span> <span class="toc-text">日志切割</span></a></li></ol></li></ol></li></ol>
 		</div>
 		
@@ -182,7 +182,7 @@ http_x_forwarded_for:在经过代理时,代理把你的本来IP加在此头信�
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2016/03/11/hello-world/" title="linux下php的安装和配置">
+ <a href="/2016/03/11/anguler/" title="linux下php的安装和配置">
   <strong>PREVIOUS:</strong><br/>
   <span>
   linux下php的安装和配置</span>
@@ -202,15 +202,15 @@ http_x_forwarded_for:在经过代理时,代理把你的本来IP加在此头信�
 
 	
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目錄</strong>
   <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#nginx的安装"><span class="toc-number">1.</span> <span class="toc-text">nginx的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常用下载目录：-usr-local-src"><span class="toc-number">1.0.1.</span> <span class="toc-text">常用下载目录：/usr/local/src/</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载软件：-wget-链接地址"><span class="toc-number">1.0.2.</span> <span class="toc-text">下载软件： wget 链接地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解压：tar-zxvf-nginx-1-4-1-tar-gz"><span class="toc-number">1.0.3.</span> <span class="toc-text">解压：tar zxvf nginx-1.4.1.tar.gz</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对即将安装的软件进行配置（-usr-local-nginx是安装目录）-configure-prefix-usr-local-nginx，缺少某些包的时候会报错，那么就安装缺少的包"><span class="toc-number">1.0.4.</span> <span class="toc-text">对即将安装的软件进行配置（/usr/local/nginx是安装目录）./configure --prefix=/usr/local/nginx，缺少某些包的时候会报错，那么就安装缺少的包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译-make-amp-amp-make-install"><span class="toc-number">1.0.5.</span> <span class="toc-text">编译 make && make install</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nginx的配置"><span class="toc-number">2.</span> <span class="toc-text">nginx的配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx下的目录"><span class="toc-number">2.0.1.</span> <span class="toc-text">nginx下的目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动nginx-usr-local-nginx-目录下执行-：-sbin-nginx"><span class="toc-number">2.0.2.</span> <span class="toc-text">启动nginx(/usr/local/nginx 目录下执行)：./sbin/nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看网络连接状态：netstat-ant"><span class="toc-number">2.0.3.</span> <span class="toc-text">查看网络连接状态：netstat -ant</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看某个进程：ps-aux-grep-nginx"><span class="toc-number">2.0.4.</span> <span class="toc-text">查看某个进程：ps aux|grep nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看nginx的进程号（在配置文件中可找到nginx-pid的文件目录）：cat-logs-nginx-pid"><span class="toc-number">2.0.5.</span> <span class="toc-text">查看nginx的进程号（在配置文件中可找到nginx.pid的文件目录）：cat logs/nginx.pid</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx-配置文件"><span class="toc-number">2.0.6.</span> <span class="toc-text">nginx 配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日志管理"><span class="toc-number">2.0.7.</span> <span class="toc-text">日志管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日志切割"><span class="toc-number">2.0.8.</span> <span class="toc-text">日志切割</span></a></li></ol></li></ol></li></ol>
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
 <aside class="clearfix">
 
   
@@ -218,7 +218,7 @@ http_x_forwarded_for:在经过代理时,代理把你的本来IP加在此头信�
   
 
   <div class="rsspart">
-	<a href="www.imengdan.com" target="_blank" title="rss">RSS</a>
+	<a href="www.imengdan.com" target="_blank" title="rss">RSS 訂閱</a>
 </div>
 
 </aside>
