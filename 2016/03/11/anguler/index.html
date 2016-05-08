@@ -78,7 +78,7 @@
     </p>
   <p class="article-time">
     <time datetime="2016-03-11T10:00:48.000Z" itemprop="datePublished">2016-03-11</time>
-    Updated:<time datetime="2016-05-08T14:38:31.480Z" itemprop="dateModified">2016-05-08</time>
+    Updated:<time datetime="2016-05-08T14:43:20.384Z" itemprop="dateModified">2016-05-08</time>
     
   </p>
 </header>
@@ -87,7 +87,7 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Angular-学习笔记"><span class="toc-number">1.</span> <span class="toc-text">Angular 学习笔记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hello-Angular"><span class="toc-number">2.</span> <span class="toc-text">Hello Angular</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#双向数据绑定"><span class="toc-number">3.</span> <span class="toc-text">双向数据绑定</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AngularJS应用的解析"><span class="toc-number"></span> <span class="toc-text">AngularJS应用的解析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#模板（Templates）"><span class="toc-number">1.</span> <span class="toc-text">模板（Templates）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用程序逻辑（Logic）和行为（Behavior）"><span class="toc-number">2.</span> <span class="toc-text">应用程序逻辑（Logic）和行为（Behavior）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模型数据（Data）"><span class="toc-number">3.</span> <span class="toc-text">模型数据（Data）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#此外，AngularJS还提供了一些非常有用的服务特性："><span class="toc-number">4.</span> <span class="toc-text">此外，AngularJS还提供了一些非常有用的服务特性：</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Angular-学习笔记"><span class="toc-number">1.</span> <span class="toc-text">Angular 学习笔记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hello-Angular"><span class="toc-number">2.</span> <span class="toc-text">Hello Angular</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#双向数据绑定"><span class="toc-number">3.</span> <span class="toc-text">双向数据绑定</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AngularJS应用的解析"><span class="toc-number"></span> <span class="toc-text">AngularJS应用的解析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#模板（Templates）"><span class="toc-number">1.</span> <span class="toc-text">模板（Templates）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用程序逻辑（Logic）和行为（Behavior）"><span class="toc-number">2.</span> <span class="toc-text">应用程序逻辑（Logic）和行为（Behavior）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模型数据（Data）"><span class="toc-number">3.</span> <span class="toc-text">模型数据（Data）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#此外，AngularJS还提供了一些非常有用的服务特性："><span class="toc-number">4.</span> <span class="toc-text">此外，AngularJS还提供了一些非常有用的服务特性：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#神奇的-scope"><span class="toc-number"></span> <span class="toc-text">神奇的$scope</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作用域"><span class="toc-number"></span> <span class="toc-text">作用域</span></a>
 		</div>
 		
 		<h2 id="Angular-学习笔记"><a href="#Angular-学习笔记" class="headerlink" title="Angular 学习笔记"></a>Angular 学习笔记</h2><h2 id="Hello-Angular"><a href="#Hello-Angular" class="headerlink" title="Hello Angular"></a>Hello Angular</h2><pre><code>&lt;!doctype html&gt;
@@ -127,8 +127,7 @@ Hello {{yourname || 'World'}}!
 <li>您还可以扩展和添加自己特定的应用服务。</li>
 <li>这些服务可以让您非常方便的编写WEB应用。</li>
 </ul>
-<p>#神奇的$scope</p>
-<ul>
+<h1 id="神奇的-scope"><a href="#神奇的-scope" class="headerlink" title="神奇的$scope"></a>神奇的$scope</h1><ul>
 <li>$scope是一个POJO(Plain Old JavaScript Object) javascript对象</li>
 <li>$scope提供了一些工具方法$watch()/$apply()</li>
 <li>$scope是表达式的执行环境（或者叫做作用域）</li>
@@ -139,8 +138,7 @@ Hello {{yourname || 'World'}}!
 <li>$scope不仅是MVC的基础，也是后面实现双向数据绑定的基础</li>
 <li>可以用angular.element($0).scope()进行调试</li>
 </ul>
-<p>#作用域</p>
-<p>最内层向上查找，会继承父对象的值</p>
+<h1 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h1><p>最内层向上查找，会继承父对象的值</p>
 <pre><code>&lt;!doctype html&gt;
 &lt;html ng-app&gt;
     &lt;head&gt;
@@ -208,7 +206,7 @@ function ListCtrl($scope) {
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Angular-学习笔记"><span class="toc-number">1.</span> <span class="toc-text">Angular 学习笔记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hello-Angular"><span class="toc-number">2.</span> <span class="toc-text">Hello Angular</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#双向数据绑定"><span class="toc-number">3.</span> <span class="toc-text">双向数据绑定</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AngularJS应用的解析"><span class="toc-number"></span> <span class="toc-text">AngularJS应用的解析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#模板（Templates）"><span class="toc-number">1.</span> <span class="toc-text">模板（Templates）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用程序逻辑（Logic）和行为（Behavior）"><span class="toc-number">2.</span> <span class="toc-text">应用程序逻辑（Logic）和行为（Behavior）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模型数据（Data）"><span class="toc-number">3.</span> <span class="toc-text">模型数据（Data）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#此外，AngularJS还提供了一些非常有用的服务特性："><span class="toc-number">4.</span> <span class="toc-text">此外，AngularJS还提供了一些非常有用的服务特性：</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Angular-学习笔记"><span class="toc-number">1.</span> <span class="toc-text">Angular 学习笔记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hello-Angular"><span class="toc-number">2.</span> <span class="toc-text">Hello Angular</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#双向数据绑定"><span class="toc-number">3.</span> <span class="toc-text">双向数据绑定</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AngularJS应用的解析"><span class="toc-number"></span> <span class="toc-text">AngularJS应用的解析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#模板（Templates）"><span class="toc-number">1.</span> <span class="toc-text">模板（Templates）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用程序逻辑（Logic）和行为（Behavior）"><span class="toc-number">2.</span> <span class="toc-text">应用程序逻辑（Logic）和行为（Behavior）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模型数据（Data）"><span class="toc-number">3.</span> <span class="toc-text">模型数据（Data）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#此外，AngularJS还提供了一些非常有用的服务特性："><span class="toc-number">4.</span> <span class="toc-text">此外，AngularJS还提供了一些非常有用的服务特性：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#神奇的-scope"><span class="toc-number"></span> <span class="toc-text">神奇的$scope</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作用域"><span class="toc-number"></span> <span class="toc-text">作用域</span></a>
   </div>
 
 <div id="asidepart">
