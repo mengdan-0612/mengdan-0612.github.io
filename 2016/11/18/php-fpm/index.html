@@ -1,0 +1,338 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>CGI，FastCGI，PHP-CGI与PHP-FPM概念了解 | mengd</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="John Doe">
+    
+    <meta name="description" content="CGI，FastCGI，PHP-CGI与PHP-FPM概念了解CGICGI全称是“公共网关接口”(Common Gateway Interface)，HTTP服务器与你的或其它机器上的程序进行“交谈”的一种工具，其程序须运行在网络服务器上。
+CGI可以用任何一种语言编写，只要这种语言具有标准输入、输">
+    
+    
+    
+    
+    <link rel="alternate" href="www.imengdan.com" title="mengd" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/logo.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/logo.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="mengd" title="mengd"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="mengd">mengd</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">笔记</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/11/18/php-fpm/" title="CGI，FastCGI，PHP-CGI与PHP-FPM概念了解" itemprop="url">CGI，FastCGI，PHP-CGI与PHP-FPM概念了解</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="John Doe">John Doe</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-11-18T10:00:48.000Z" itemprop="datePublished">2016-11-18</time>
+    Updated:<time datetime="2016-11-18T11:06:56.451Z" itemprop="dateModified">2016-11-18</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CGI，FastCGI，PHP-CGI与PHP-FPM概念了解"><span class="toc-number">1.</span> <span class="toc-text">CGI，FastCGI，PHP-CGI与PHP-FPM概念了解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CGI"><span class="toc-number">1.1.</span> <span class="toc-text">CGI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FastCGI"><span class="toc-number">1.2.</span> <span class="toc-text">FastCGI</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FastCGI特点"><span class="toc-number">1.2.1.</span> <span class="toc-text">FastCGI特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FastCGI的工作原理"><span class="toc-number">1.2.2.</span> <span class="toc-text">FastCGI的工作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FastCGI的不足"><span class="toc-number">1.2.3.</span> <span class="toc-text">FastCGI的不足</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP-CGI"><span class="toc-number">1.3.</span> <span class="toc-text">PHP-CGI</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP-CGI的不足："><span class="toc-number">1.3.1.</span> <span class="toc-text">PHP-CGI的不足：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP-FPM"><span class="toc-number">1.4.</span> <span class="toc-text">PHP-FPM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spawn-FCGI"><span class="toc-number">1.5.</span> <span class="toc-text">Spawn-FCGI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP-FPM与spawn-CGI对比"><span class="toc-number">1.6.</span> <span class="toc-text">PHP-FPM与spawn-CGI对比</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#相关文章：http-www-nowamagic-net-librarys-veda-detail-1319"><span class="toc-number">1.6.0.1.</span> <span class="toc-text">相关文章：http://www.nowamagic.net/librarys/veda/detail/1319</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx处理一个php请求"><span class="toc-number">1.7.</span> <span class="toc-text">nginx处理一个php请求</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#相关文章：http-blog-csdn-net-a451491135-article-details-48442581"><span class="toc-number">1.7.0.1.</span> <span class="toc-text">相关文章：http://blog.csdn.net/a451491135/article/details/48442581</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php的五种运行方式"><span class="toc-number">1.8.</span> <span class="toc-text">php的五种运行方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cgi"><span class="toc-number">1.8.1.</span> <span class="toc-text">cgi:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Isapi"><span class="toc-number">1.8.2.</span> <span class="toc-text">Isapi:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fast-cgi"><span class="toc-number">1.8.3.</span> <span class="toc-text">fast-cgi:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cli"><span class="toc-number">1.8.4.</span> <span class="toc-text">cli:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#apache模块的DLL："><span class="toc-number">1.8.5.</span> <span class="toc-text">apache模块的DLL：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#相关文章：http-blog-csdn-net-enough-br-article-details-6447011"><span class="toc-number">1.8.5.1.</span> <span class="toc-text">相关文章：http://blog.csdn.net/enough_br/article/details/6447011</span></a></li></ol></li></ol></li></ol></li></ol>
+		</div>
+		
+		<h1 id="CGI，FastCGI，PHP-CGI与PHP-FPM概念了解"><a href="#CGI，FastCGI，PHP-CGI与PHP-FPM概念了解" class="headerlink" title="CGI，FastCGI，PHP-CGI与PHP-FPM概念了解"></a>CGI，FastCGI，PHP-CGI与PHP-FPM概念了解</h1><h2 id="CGI"><a href="#CGI" class="headerlink" title="CGI"></a>CGI</h2><p>CGI全称是“公共网关接口”(Common Gateway Interface)，HTTP服务器与你的或其它机器上的程序进行“交谈”的一种工具，其程序须运行在网络服务器上。</p>
+<p>CGI可以用任何一种语言编写，只要这种语言具有标准输入、输出和环境变量。如php,perl,tcl等。</p>
+<h2 id="FastCGI"><a href="#FastCGI" class="headerlink" title="FastCGI"></a>FastCGI</h2><p>FastCGI像是一个常驻(long-live)型的CGI，它可以一直执行着，只要激活后，不会每次都要花费时间去fork一次（这是CGI最为人诟病的fork-and-execute 模式）。它还支持分布式的运算，即 FastCGI 程序可以在网站服务器以外的主机上执行并且接受来自其它网站服务器来的请求。</p>
+<p>FastCGI是语言无关的、可伸缩架构的CGI开放扩展，其主要行为是将CGI解释器进程保持在内存中并因此获得较高的性能。众所周知，CGI解释器的反复加载是CGI性能低下的主要原因，如果CGI解释器保持在内存中并接受FastCGI进程管理器调度，则可以提供良好的性能、伸缩性、Fail- Over特性等等。</p>
+<h3 id="FastCGI特点"><a href="#FastCGI特点" class="headerlink" title="FastCGI特点"></a>FastCGI特点</h3><ul>
+<li><p>FastCGI具有语言无关性.</p>
+</li>
+<li><p>FastCGI在进程中的应用程序，独立于核心web服务器运行，提供了一个比API更安全的环境。APIs把应用程序的代码与核心的web服务器链接在一起，这意味着在一个错误的API的应用程序可能会损坏其他应用程序或核心服务器。 恶意的API的应用程序代码甚至可以窃取另一个应用程序或核心服务器的密钥。</p>
+</li>
+<li><p>FastCGI技术目前支持语言有：C/C++、Java、Perl、Tcl、Python、SmallTalk、Ruby等。相关模块在Apache, ISS, Lighttpd等流行的服务器上也是可用的。</p>
+</li>
+<li><p>FastCGI的不依赖于任何Web服务器的内部架构，因此即使服务器技术的变化, FastCGI依然稳定不变。</p>
+</li>
+</ul>
+<h3 id="FastCGI的工作原理"><a href="#FastCGI的工作原理" class="headerlink" title="FastCGI的工作原理"></a>FastCGI的工作原理</h3><ul>
+<li><p>Web Server启动时载入FastCGI进程管理器（IIS ISAPI或Apache Module)</p>
+</li>
+<li><p>FastCGI进程管理器自身初始化，启动多个CGI解释器进程(可见多个php-cgi)并等待来自Web Server的连接。</p>
+</li>
+<li><p>当客户端请求到达Web Server时，FastCGI进程管理器选择并连接到一个CGI解释器。Web server将CGI环境变量和标准输入发送到FastCGI子进程php-cgi。</p>
+</li>
+<li><p>FastCGI子进程完成处理后将标准输出和错误信息从同一连接返回Web Server。当FastCGI子进程关闭连接时，请求便告处理完成。FastCGI子进程接着等待并处理来自FastCGI进程管理器(运行在Web Server中)的下一个连接。 在CGI模式中，php-cgi在此便退出了。</p>
+</li>
+</ul>
+<p>在上述情况中，你可以想象CGI通常有多慢。每一个Web请求PHP都必须重新解析php.ini、重新载入全部扩展并重初始化全部数据结构。使用FastCGI，所有这些都只在进程启动时发生一次。一个额外的好处是，持续数据库连接(Persistent database connection)可以工作。</p>
+<h3 id="FastCGI的不足"><a href="#FastCGI的不足" class="headerlink" title="FastCGI的不足"></a>FastCGI的不足</h3><p>因为是多进程，所以比CGI多线程消耗更多的服务器内存，PHP-CGI解释器每进程消耗7至25兆内存，将这个数字乘以50或100就是很大的内存数。</p>
+<p>Nginx 0.8.46+PHP 5.2.14(FastCGI)服务器在3万并发连接下，开启的10个Nginx进程消耗150M内存（15M<em>10=150M），开启的64个php-cgi进程消耗1280M内存（20M</em>64=1280M），加上系统自身消耗的内存，总共消耗不到2GB内存。如果服务器内存较小，完全可以只开启25个php-cgi进程，这样php-cgi消耗的总内存数才500M。<br>上面的数据摘自Nginx 0.8.x + PHP 5.2.13(FastCGI)搭建胜过Apache十倍的Web服务器(第6版)</p>
+<h2 id="PHP-CGI"><a href="#PHP-CGI" class="headerlink" title="PHP-CGI"></a>PHP-CGI</h2><p>PHP-CGI是PHP自带的FastCGI管理器。</p>
+<h3 id="PHP-CGI的不足："><a href="#PHP-CGI的不足：" class="headerlink" title="PHP-CGI的不足："></a>PHP-CGI的不足：</h3><ul>
+<li><p>php-cgi变更php.ini配置后需重启php-cgi才能让新的php-ini生效，不可以平滑重启。</p>
+</li>
+<li><p>直接杀死php-cgi进程，php就不能运行了。(PHP-FPM和Spawn-FCGI就没有这个问题，守护进程会平滑从新生成新的子进程。）</p>
+</li>
+</ul>
+<h2 id="PHP-FPM"><a href="#PHP-FPM" class="headerlink" title="PHP-FPM"></a>PHP-FPM</h2><p>PHP-FPM是一个PHP FastCGI管理器，是只用于PHP的，可以在 <a href="http://php-fpm.org/download下载得到。" target="_blank" rel="external">http://php-fpm.org/download下载得到。</a></p>
+<p>PHP-FPM其实是PHP源代码的一个补丁，旨在将FastCGI进程管理整合进PHP包中。必须将它patch到你的PHP源代码中，在编译安装PHP后才可以使用。</p>
+<p>现在我们可以在最新的PHP 5.3.2的源码树里下载得到直接整合了PHP-FPM的分支，据说下个版本会融合进PHP的主分支去。相对Spawn-FCGI，PHP-FPM在CPU和内存方面的控制都更胜一筹，而且前者很容易崩溃，必须用crontab进行监控，而PHP-FPM则没有这种烦恼。</p>
+<p>PHP5.3.3已经集成php-fpm了，不再是第三方的包了。PHP-FPM提供了更好的PHP进程管理方式，可以有效控制内存和进程、可以平滑重载PHP配置，比spawn-fcgi具有更多有点，所以被PHP官方收录了。在./configure的时候带 –enable-fpm参数即可开启PHP-FPM。</p>
+<h2 id="Spawn-FCGI"><a href="#Spawn-FCGI" class="headerlink" title="Spawn-FCGI"></a>Spawn-FCGI</h2><p>Spawn-FCGI是一个通用的FastCGI管理服务器，它是lighttpd中的一部份，很多人都用Lighttpd的Spawn-FCGI进行FastCGI模式下的管理工作，不过有不少缺点。而PHP-FPM的出现多少缓解了一些问题，但PHP-FPM有个缺点就是要重新编译，这对于一些已经运行的环境可能有不小的风险(refer)，在php 5.3.3中可以直接使用PHP-FPM了。</p>
+<p>Spawn-FCGI目前已经独成为一个项目，更加稳定一些，也给很多Web 站点的配置带来便利。已经有不少站点将它与nginx搭配来解决动态网页。</p>
+<p>最新的lighttpd也没有包含这一块了(<a href="http://www.lighttpd.net/search?q=Spawn-FCGI)，但可以在以前版本中找到它。在lighttpd-1.4.15版本中就包含了(http://www.lighttpd.net/download/lighttpd-1.4.15.tar.gz)，目前Spawn-FCGI的下载地址是http://redmine.lighttpd.net/projects/spawn-fcgi，最新版本是http://www.lighttpd.net/download/spawn-fcgi-1.6.3.tar.gz。" target="_blank" rel="external">http://www.lighttpd.net/search?q=Spawn-FCGI)，但可以在以前版本中找到它。在lighttpd-1.4.15版本中就包含了(http://www.lighttpd.net/download/lighttpd-1.4.15.tar.gz)，目前Spawn-FCGI的下载地址是http://redmine.lighttpd.net/projects/spawn-fcgi，最新版本是http://www.lighttpd.net/download/spawn-fcgi-1.6.3.tar.gz。</a></p>
+<p>注：最新的Spawn-FCGI可以到lighttpd.net网站搜索“Spawn-FCGI”找到它的最新版本发布地址。</p>
+<h2 id="PHP-FPM与spawn-CGI对比"><a href="#PHP-FPM与spawn-CGI对比" class="headerlink" title="PHP-FPM与spawn-CGI对比"></a>PHP-FPM与spawn-CGI对比</h2><p>PHP-FPM的使用非常方便，配置都是在PHP-FPM.ini的文件内，而启动、重启都可以从php/sbin/PHP-FPM中进行。更方便的是修改php.ini后可以直接使用PHP-FPM reload进行加载，无需杀掉进程就可以完成php.ini的修改加载</p>
+<p>结果显示使用PHP-FPM可以使php有不小的性能提升。PHP-FPM控制的进程cpu回收的速度比较慢,内存分配的很均匀。</p>
+<p>Spawn-FCGI控制的进程CPU下降的很快，而内存分配的比较不均匀。有很多进程似乎未分配到，而另外一些却占用很高。可能是由于进程任务分配的不均匀导致的。而这也导致了总体响应速度的下降。而PHP-FPM合理的分配，导致总体响应的提到以及任务的平均。</p>
+<h4 id="相关文章：http-www-nowamagic-net-librarys-veda-detail-1319"><a href="#相关文章：http-www-nowamagic-net-librarys-veda-detail-1319" class="headerlink" title="相关文章：http://www.nowamagic.net/librarys/veda/detail/1319"></a>相关文章：<a href="http://www.nowamagic.net/librarys/veda/detail/1319" target="_blank" rel="external">http://www.nowamagic.net/librarys/veda/detail/1319</a></h4><h2 id="nginx处理一个php请求"><a href="#nginx处理一个php请求" class="headerlink" title="nginx处理一个php请求"></a>nginx处理一个php请求</h2><p>1.nginx服务器启动时自动载入fastcgi进程管理器</p>
+<p>2.Fastcgi进程管理器(php-fpm)自身初始化,并且启动多个cgi解释进程(php-cgi)并等待来自nginx的连接</p>
+<p>3.当nginx服务器收到需要解析php的时，将请求转发到fastcgi接口(socket)，fastcgi进程管理器收到请求后选择并连接一个cgi解释器,nginx服务器将cgi环境变量和标准输入发送给cgi解释器(也就是php-cgi)</p>
+<p>4.FastCGI 子进程(php-cgi)完成处理后将标准输出和错误信息从同一连接返回Web Server。当FastCGI子进程关闭连接时， 请求便告处理完成。FastCGI子进程接着等待并处理来自FastCGI进程管理器(运行在Web Server中)的下一个连接。 </p>
+<h4 id="相关文章：http-blog-csdn-net-a451491135-article-details-48442581"><a href="#相关文章：http-blog-csdn-net-a451491135-article-details-48442581" class="headerlink" title="相关文章：http://blog.csdn.net/a451491135/article/details/48442581"></a>相关文章：<a href="http://blog.csdn.net/a451491135/article/details/48442581" target="_blank" rel="external">http://blog.csdn.net/a451491135/article/details/48442581</a></h4><h2 id="php的五种运行方式"><a href="#php的五种运行方式" class="headerlink" title="php的五种运行方式"></a>php的五种运行方式</h2><h3 id="cgi"><a href="#cgi" class="headerlink" title="cgi:"></a>cgi:</h3><p>CGI即通用网关接口(Common Gateway Interface)，它是一段程序, 通俗的讲CGI就象是一座桥，把网页和WEB服务器中的执行程序连接起来，<br>它把HTML接收的指令传递给服务器的执行程序，再把服务器执行程序的结果返还给HTML页。</p>
+<p>CGI 的跨平台性能极佳，几乎可以在任何操作系统上实现。</p>
+<p>每有一个用户请求，都会激活一个CGI进程，当用户请求数量非常多时，会大量挤占系统的资源如内存，CPU时间等，造成效能低下。</p>
+<h3 id="Isapi"><a href="#Isapi" class="headerlink" title="Isapi:"></a>Isapi:</h3><p>ISAPI即Internet Server Application Program Interface，是微软提供的一套面向Internet服务的API接口</p>
+<p>一个ISAPI的DLL，可以在被用户请求激活后长驻内存，等待用户的另一个请求，还可以在一个DLL里设置多个用户请求处理函数，此外，<br>ISAPI的DLL应用程序和WWW服务器处于同一个进程中，效率要显著高于CGI。（由于微软的排他性，只能运行于windows环境)</p>
+<h3 id="fast-cgi"><a href="#fast-cgi" class="headerlink" title="fast-cgi:"></a>fast-cgi:</h3><p>fast-cgi 是cgi的升级版本，FastCGI 像是一个常驻 (long-live) 型的 CGI，它可以一直执行着，只要激活后，不会每次都要花费时间去 fork 一次 (这是 CGI 最为人诟病的 fork-and-execute 模式)。</p>
+<h3 id="cli"><a href="#cli" class="headerlink" title="cli:"></a>cli:</h3><p>cli是php的命令行运行模式，大家经常会使用它，但是可能并没有注意到（例如：我们在linux下经常使用 “php -m”查找PHP安装了那些扩展就是PHP命令行运行模式</p>
+<h3 id="apache模块的DLL："><a href="#apache模块的DLL：" class="headerlink" title="apache模块的DLL："></a>apache模块的DLL：</h3><p>该运行模式是我们以前在windows环境下使用apache服务器经常使用的，而在模块化(DLL)中，PHP是与Web服务器一起启动并运行的。（是apache在CGI的基础上进行的一种扩展，加快PHP的运行效率）</p>
+<h4 id="相关文章：http-blog-csdn-net-enough-br-article-details-6447011"><a href="#相关文章：http-blog-csdn-net-enough-br-article-details-6447011" class="headerlink" title="相关文章：http://blog.csdn.net/enough_br/article/details/6447011"></a>相关文章：<a href="http://blog.csdn.net/enough_br/article/details/6447011" target="_blank" rel="external">http://blog.csdn.net/enough_br/article/details/6447011</a></h4>  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2016/11/18/php-fpm/" data-title="CGI，FastCGI，PHP-CGI与PHP-FPM概念了解 | mengd" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/08/12/mysql1/"  title="mysql主从">
+ <strong>NEXT:</strong><br/> 
+ <span>mysql主从
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CGI，FastCGI，PHP-CGI与PHP-FPM概念了解"><span class="toc-number">1.</span> <span class="toc-text">CGI，FastCGI，PHP-CGI与PHP-FPM概念了解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CGI"><span class="toc-number">1.1.</span> <span class="toc-text">CGI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FastCGI"><span class="toc-number">1.2.</span> <span class="toc-text">FastCGI</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FastCGI特点"><span class="toc-number">1.2.1.</span> <span class="toc-text">FastCGI特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FastCGI的工作原理"><span class="toc-number">1.2.2.</span> <span class="toc-text">FastCGI的工作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FastCGI的不足"><span class="toc-number">1.2.3.</span> <span class="toc-text">FastCGI的不足</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP-CGI"><span class="toc-number">1.3.</span> <span class="toc-text">PHP-CGI</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP-CGI的不足："><span class="toc-number">1.3.1.</span> <span class="toc-text">PHP-CGI的不足：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP-FPM"><span class="toc-number">1.4.</span> <span class="toc-text">PHP-FPM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spawn-FCGI"><span class="toc-number">1.5.</span> <span class="toc-text">Spawn-FCGI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP-FPM与spawn-CGI对比"><span class="toc-number">1.6.</span> <span class="toc-text">PHP-FPM与spawn-CGI对比</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#相关文章：http-www-nowamagic-net-librarys-veda-detail-1319"><span class="toc-number">1.6.0.1.</span> <span class="toc-text">相关文章：http://www.nowamagic.net/librarys/veda/detail/1319</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx处理一个php请求"><span class="toc-number">1.7.</span> <span class="toc-text">nginx处理一个php请求</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#相关文章：http-blog-csdn-net-a451491135-article-details-48442581"><span class="toc-number">1.7.0.1.</span> <span class="toc-text">相关文章：http://blog.csdn.net/a451491135/article/details/48442581</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php的五种运行方式"><span class="toc-number">1.8.</span> <span class="toc-text">php的五种运行方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cgi"><span class="toc-number">1.8.1.</span> <span class="toc-text">cgi:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Isapi"><span class="toc-number">1.8.2.</span> <span class="toc-text">Isapi:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fast-cgi"><span class="toc-number">1.8.3.</span> <span class="toc-text">fast-cgi:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cli"><span class="toc-number">1.8.4.</span> <span class="toc-text">cli:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#apache模块的DLL："><span class="toc-number">1.8.5.</span> <span class="toc-text">apache模块的DLL：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#相关文章：http-blog-csdn-net-enough-br-article-details-6447011"><span class="toc-number">1.8.5.1.</span> <span class="toc-text">相关文章：http://blog.csdn.net/enough_br/article/details/6447011</span></a></li></ol></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="www.imengdan.com" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2016 
+		
+		<a href="http://yoursite.com" target="_blank" title="John Doe">John Doe</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
